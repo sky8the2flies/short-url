@@ -8,7 +8,6 @@ module.exports = {
 };
 
 function getOne(shortUrl) {
-    console.log(shortUrls)
     return shortUrls.find(urls => urls.url.toString() === shortUrl.toString());
 }
 
@@ -16,7 +15,7 @@ function create(shortUrl) {
     if (shortUrl.url === '') {
         shortUrl.url = makeid(6);
     }
-    shortUrls.push({url: shortUrl.url, link: shortUrl.link});
+    shortUrls.push(shortUrl);
 }
 
 function makeid(length) {

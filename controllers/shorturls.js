@@ -13,8 +13,10 @@ function index(req, res) {
 
 function show(req, res) {
     const url = ShortUrl.getOne(req.params.shorturl);
-    if (url !== undefined)
+    if (url !== undefined) {
         res.redirect(url.link);
+        return;
+    }
     res.redirect('/');
 }
 
@@ -26,7 +28,6 @@ function create(req, res) {
 
 function view(req, res) {
     const shortUrl = ShortUrl.getOne(req.params.shorturl);
-    console.log(shortUrl, req.params.shorturl)
     res.render('show', {
         shortUrl
     });

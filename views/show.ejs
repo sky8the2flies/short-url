@@ -6,8 +6,7 @@
     <title>Short Url</title>
 </head>
 <body>
-    <% console.log(shortUrl) %> 
-    <h1>Url created for /<%= shortUrl.url %> linked to <%= shortUrl.link %> </h1>
-    <a href="/">Go to home</a> | <a href="<%= shortUrl.link %>">Go to <%= shortUrl.link %> </a>
+    <h1>Url created for /<%= shortUrl.url %></h1>
+    <a href="/">Go to home</a> | <a href="<%= shortUrl.link %>">Go to /<%= shortUrl.url %> </a>
 </body>
 </html>
