@@ -1,9 +1,11 @@
 var express = require('express');
+const shortUrlCtrl = require('../controllers/shorturls');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+/* GET root index */
+router.get('/', shortUrlCtrl.index);
+router.post('/', shortUrlCtrl.create);
+router.get('/:shorturl/view', shortUrlCtrl.view);
+router.get('/:shorturl', shortUrlCtrl.show);
 
 module.exports = router;

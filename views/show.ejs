@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Url</title>
+</head>
+<body>
+    <% console.log(shortUrl) %> 
+    <h1>Url created for /<%= shortUrl.url %> linked to <%= shortUrl.link %> </h1>
+    <a href="/">Go to home</a> | <a href="<%= shortUrl.link %>">Go to <%= shortUrl.link %> </a>
+</body>
+</html>
