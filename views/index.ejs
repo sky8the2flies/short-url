@@ -6,12 +6,17 @@
     <title>Short Url</title>
 </head>
 <body>
+    <% if (errMsg) { %>
+        <h1><%= errMsg %></h1>
+    <% } %>
     <h1>Create a short url</h1>
     <form action="/" method="POST" autocomplete="off">
-        <h2>Url extension</h2>
-        <input type="text" name="url">
-        <h2>Url link</h2>
-        <input type="text" name="link" required>
+        <label>Url extension:
+            <input type="text" name="url">
+        </label><br/>
+        <label>Url link:
+            <input type="text" name="link" required>
+        </label><br/>
         <button type="submit">Create Link</button>
       </form>
 </body>

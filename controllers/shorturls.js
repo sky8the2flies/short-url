@@ -8,27 +8,56 @@ module.exports = {
 };
 
 function index(req, res) {
-    res.render('index');
+    ShortUrl.find({}, function(err, shortUrl) {
+        console.log(shortUrl);
+    });
+    res.render('index', {
+        errMsg: null
+    });
 }
 
 function show(req, res) {
-    const url = ShortUrl.getOne(req.params.shorturl);
-    if (url !== undefined) {
-        res.redirect(url.link);
-        return;
-    }
-    res.redirect('/');
+    ShortUrl.findOne({url: req.params.shorturl}, function(err, shortUrl) {
+        if (!shortUrl) {
+            return res.redirect('/');
+        }
+        res.redirect(shortUrl.link);
+    });
 }
 
 function create(req, res) {
     if (req.body.link === '') return;
-    ShortUrl.create(req.body);
-    res.redirect(`/${req.body.url}/view`);
+    if (!req.body.url) req.body.url = makeUrl(6);
+    const shortUrl = new ShortUrl(req.body);
+    shortUrl.save(function(err) {
+        if (err) { // 11000
+            if(err.code === 11000)
+                return res.render('index', {
+                    errMsg: `Url /${req.body.url} is already in use`
+                });
+            return res.redirect('/');
+        }
+        res.redirect(`/${req.body.url}/view`);
+    });
 }
 
 function view(req, res) {
-    const shortUrl = ShortUrl.getOne(req.params.shorturl);
-    res.render('show', {
-        shortUrl
+    ShortUrl.findOne({url: req.params.shorturl}, function(err, shortUrl) {
+        if (!shortUrl) {
+            return res.redirect('/');
+        }
+        res.render('show', {
+            shortUrl
+        });
     });
+}
+
+function makeUrl(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
 }
