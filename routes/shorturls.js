@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET root index */
 router.get('/', shortUrlCtrl.index);
 router.post('/', shortUrlCtrl.create);
-router.get('/:shorturl/view', shortUrlCtrl.view);
-router.get('/:shorturl', shortUrlCtrl.show);
+router.get('/:shorturl/view', shortUrlCtrl.show);
+router.get('/:shorturl', shortUrlCtrl.redirect);
 
 module.exports = router;
