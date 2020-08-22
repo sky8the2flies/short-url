@@ -3,7 +3,11 @@
 
 <div class="view-url">
     <h1>Url extension directs to /<%= shortUrl.url %></h1>
-    <a href="<%= shortUrl.link %>">GO TO /<%= shortUrl.url %></a>
+    <a href="<%= shortUrl.link %>">Go to /<%= shortUrl.url %></a>
+    <button id="copy-btn" onclick="copyLink()">Copy link</button>
+    <input id="copy-text" value="<%= `${fullUrl}/${shortUrl.url}` %>">
+
+    <script src="../javascripts/copy.js"></script>
 </div>
 
 <%- include('./partials/footer') %>
