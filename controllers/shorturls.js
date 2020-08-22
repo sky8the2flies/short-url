@@ -2,9 +2,9 @@ var ShortUrl = require('../models/shorturl');
 
 module.exports = {
     index,
-    show,
+    redirect,
     create,
-    view
+    show
 };
 
 function index(req, res) {
@@ -13,12 +13,12 @@ function index(req, res) {
     });
     res.render('index', {
         page: 'root',
-        rUrl: makeUrl(6),
+        rUrl: makeUrl(7),
         errMsg: null
     });
 }
 
-function show(req, res) {
+function redirect(req, res) {
     ShortUrl.findOne({url: req.params.shorturl}, function(err, shortUrl) {
         if (!shortUrl) {
             return res.redirect('/');
@@ -29,14 +29,14 @@ function show(req, res) {
 
 function create(req, res) {
     if (req.body.link === '') return;
-    if (!req.body.url) req.body.url = makeUrl(6);
+    if (!req.body.url) req.body.url = makeUrl(7);
     const shortUrl = new ShortUrl(req.body);
     shortUrl.save(function(err) {
         if (err) {
             if(err.code === 11000)
                 return res.render('index', {
                     page: 'root',
-                    rUrl: makeUrl(6),
+                    rUrl: makeUrl(7),
                     errMsg: {
                         head: `Error on /${req.body.url}`,
                         body: `Url is already in use. Please choose a different extension`
@@ -48,13 +48,15 @@ function create(req, res) {
     });
 }
 
-function view(req, res) {
+function show(req, res) {
+    const fullUrl = req.protocol + '://' + req.get('host');
     ShortUrl.findOne({url: req.params.shorturl}, function(err, shortUrl) {
         if (!shortUrl) {
             return res.redirect('/');
         }
         res.render('show', {
             page: 'view',
+            fullUrl,
             shortUrl
         });
     });
