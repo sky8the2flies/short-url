@@ -12,6 +12,8 @@ function index(req, res) {
         console.log(shortUrl);
     });
     res.render('index', {
+        page: 'root',
+        rUrl: makeUrl(6),
         errMsg: null
     });
 }
@@ -30,10 +32,15 @@ function create(req, res) {
     if (!req.body.url) req.body.url = makeUrl(6);
     const shortUrl = new ShortUrl(req.body);
     shortUrl.save(function(err) {
-        if (err) { // 11000
+        if (err) {
             if(err.code === 11000)
                 return res.render('index', {
-                    errMsg: `Url /${req.body.url} is already in use`
+                    page: 'root',
+                    rUrl: makeUrl(6),
+                    errMsg: {
+                        head: `Error on /${req.body.url}`,
+                        body: `Url is already in use. Please choose a different extension`
+                    }
                 });
             return res.redirect('/');
         }
@@ -47,6 +54,7 @@ function view(req, res) {
             return res.redirect('/');
         }
         res.render('show', {
+            page: 'view',
             shortUrl
         });
     });

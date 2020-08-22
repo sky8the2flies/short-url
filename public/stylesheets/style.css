@@ -1,8 +1,111 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Helvetica;
+  color: #424748;
 }
 
-a {
-  color: #00B7FF;
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+  "nav"
+  "main";
+}
+
+
+body > nav {
+  grid-area: nav;
+  background-color: #B8C0C2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 0 30px;
+}
+
+nav > img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: auto;
+}
+
+nav > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav > a:hover {
+  color: white;
+  background-color: #424748;
+}
+
+nav > a.active {
+  color: white;
+}
+
+body > main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E8ECEB;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+.top {
+  margin-bottom: 50px;
+}
+
+#new-url-form {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, minmax(auto, 22rem));
+}
+
+#new-url-form * {
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#new-url-form > label {
+  text-align: center;
+  font-size: 25px;
+}
+
+#new-url-form > button {
+  grid-column: 1 / 3;
+  width: 50%;
+  margin: auto;
+}
+
+.required {
+  color: red;
+}
+
+#new-url-form > button:hover {
+  color: white;
+  background-color: #424748;
+  cursor: pointer;
+}
+
+.error {
+  margin-bottom: 10px;
+  border-bottom: 2px solid red;
+  padding: 5px;
+}
+
+.error * {
+  color: rgb(204, 0, 0);
+  text-align: center;
+}
+
+.error .body {
+  font-size: 25px;
 }

@@ -2,16 +2,17 @@
 <%- include('./partials/header') %>
 
 <% if (errMsg) { %>
-    <h1><%= errMsg %></h1>
+    <div class="error">
+        <h1 class="head"><%= errMsg.head %></h1>
+        <p class="body"><%= errMsg.body %></p>
+    </div>
 <% } %>
-<h1>Create a short url</h1>
-<form action="/" method="POST" autocomplete="off">
-    <label>Url extension:
-        <input type="text" name="url">
-    </label><br/>
-    <label>Url link:
+<h1 class="top">Create a short url</h1>
+<form id="new-url-form" action="/" method="POST" autocomplete="off">
+    <label>Url extension:</label>
+        <input value="<%= rUrl %>" type="text" name="url">
+    <label>Url link:<span class="required">*</span></label>
         <input type="text" name="link" required>
-    </label><br/>
     <button type="submit">Create Link</button>
 </form>
 
