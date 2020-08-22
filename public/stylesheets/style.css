@@ -9,10 +9,11 @@
 body {
   height: 100vh;
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 50px 1fr 100px;
   grid-template-areas: 
   "nav"
-  "main";
+  "main"
+  "footer";
 }
 
 
@@ -108,4 +109,32 @@ body > main {
 
 .error .body {
   font-size: 25px;
+}
+
+.view-url {
+  width: 100%;
+  text-align: center;
+}
+
+.view-url * {
+  margin: 20px;
+}
+
+.view-url a {
+  font-size: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: white;
+  text-align: center;
+  margin: auto;
+}
+
+.footer * {
+  margin: 10px;
+}
+
+.footer a{
+  color: rgb(112, 188, 250);
 }

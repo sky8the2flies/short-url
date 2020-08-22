@@ -1,7 +1,9 @@
 
 <%- include('./partials/header') %>
 
-<h1>Url created for /<%= shortUrl.url %></h1>
-<a href="/">Go to home</a> | <a href="<%= shortUrl.link %>">Go to /<%= shortUrl.url %></a>
+<div class="view-url">
+    <h1>Url extension directs to /<%= shortUrl.url %></h1>
+    <a href="<%= shortUrl.link %>">GO TO /<%= shortUrl.url %></a>
+</div>
 
 <%- include('./partials/footer') %>
