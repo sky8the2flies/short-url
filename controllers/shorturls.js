@@ -21,7 +21,7 @@ function index(req, res) {
 function redirect(req, res) {
     ShortUrl.findOne({url: req.params.shorturl}, function(err, shortUrl) {
         if (!shortUrl) {
-            return res.redirect('/');
+            return res.redirect(`/${req.params.shorturl}/404`);
         }
         res.redirect(shortUrl.link);
     });
@@ -52,7 +52,7 @@ function show(req, res) {
     const fullUrl = req.protocol + '://' + req.get('host');
     ShortUrl.findOne({url: req.params.shorturl}, function(err, shortUrl) {
         if (!shortUrl) {
-            return res.redirect('/');
+            return res.redirect(`/${req.params.shorturl}/404`);
         }
         res.render('show', {
             page: 'view',
