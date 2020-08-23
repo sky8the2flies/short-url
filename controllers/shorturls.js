@@ -39,7 +39,8 @@ function create(req, res) {
                     rUrl: makeUrl(7),
                     errMsg: {
                         head: `Error on /${req.body.url}`,
-                        body: `Url is already in use. Please choose a different extension`
+                        body: `Url is already in use. Please choose a different extension`,
+                        url: req.body.url
                     }
                 });
             return res.redirect('/');

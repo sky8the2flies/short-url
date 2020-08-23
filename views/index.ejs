@@ -2,18 +2,33 @@
 <%- include('./partials/header') %>
 
 <% if (errMsg) { %>
-    <div class="error">
+    <div class="error" onclick="closeError()">
         <h1 class="head"><%= errMsg.head %></h1>
         <p class="body"><%= errMsg.body %></p>
+        <button onclick="closeError()">X</button>
     </div>
+    <script type="text/javascript" src="javascripts/urlerror.js"></script>
 <% } %>
-<h1 class="top">Create a short url</h1>
-<form id="new-url-form" action="/" method="POST" autocomplete="off">
-    <label>Url extension:</label>
-        <input value="<%= rUrl %>" type="text" name="url">
-    <label>Url link:<span class="required">*</span></label>
-        <input type="text" name="link" required>
-    <button type="submit">Create Link</button>
-</form>
+
+<div id="container">
+    <div class="content">
+        <div class="url-form">
+            <h1>Create a short url</h1>
+            <form class="form-box" action="/" method="POST" autocomplete="off">
+                <div class="input-box w50">
+                    <input value="<%= errMsg ? errMsg.url : rUrl %>" type="text" name="url" required>
+                    <span class="label">Url Extension</span>
+                </div>
+                <div class="input-box w50">
+                    <input type="text" name="link" required>
+                    <span class="label">Url Link<span class="required">*</span></span>
+                </div>
+                <div class="input-box w50">
+                    <input type="submit" value="Create Url">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <%- include('./partials/footer') %>

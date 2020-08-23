@@ -6,7 +6,7 @@ body > nav {
     align-items: center;
     padding: 0 20px 0 30px;
     font-size: 20px;
-  }
+}
   
   nav > a {
     transition: ease-in-out .5s;
@@ -18,7 +18,7 @@ body > nav {
   
   nav > a:hover {
     transition: ease-in-out .5s;
-    color: var(--light-dark);
+    color: var(--light-light-gray);
     background-color: var(--light-dark-blue);
   }
   
@@ -29,6 +29,9 @@ body > nav {
 
   .footer {
     grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--light-dark);
     text-align: center;
     margin: auto;
@@ -37,9 +40,12 @@ body > nav {
   }
   
   .footer * {
-    margin: 10px;
+    font-size: 3vw;
     color: var(--light-light-blue);
     font-variant: small-caps;
+  }
+  .footer h1, .footer h4 {
+    margin: 10px;
   }
   
   .footer a {
