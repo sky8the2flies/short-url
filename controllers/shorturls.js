@@ -30,6 +30,28 @@ function redirect(req, res) {
 function create(req, res) {
     if (req.body.link === '') return;
     if (!req.body.url) req.body.url = makeUrl(7);
+    if (!req.body.link.includes('://') || !req.body.link.includes('http')) {
+        return res.render('index', {
+            page: 'root',
+            rUrl: makeUrl(7),
+            errMsg: {
+                head: `Error on link validation`,
+                body: `This link is invalid, make sure to include [http://]`,
+                url: req.body.url
+            }
+        });
+    }
+    if (!isValid(req.body.url)) {
+        return res.render('index', {
+            page: 'root',
+            rUrl: makeUrl(7),
+            errMsg: {
+                head: `Error on special characters`,
+                body: `Extentsions cannot contain special characters`,
+                url: req.body.url
+            }
+        });
+    }
     const shortUrl = new ShortUrl(req.body);
     shortUrl.save(function(err) {
         if (err) {
@@ -71,4 +93,8 @@ function makeUrl(length) {
        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+}
+
+function isValid(str){
+    return !/[\s~`!@#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?()\._]/g.test(str);
 }

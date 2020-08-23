@@ -140,24 +140,6 @@ body > main {
   opacity: .8;
 }
 
-.error button {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  color: red;
-  border: 1px solid black;
-  border-radius: 10px;
-  background: transparent;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  background: var(--light-dark-gray)
-}
-.error button:hover {
-  color: white;
-  background: red; 
-}
-
 .view-url {
   width: 100%;
   text-align: center;
