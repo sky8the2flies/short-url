@@ -57,3 +57,9 @@ body > nav {
     transition: ease-in-out .5s;
     color: var(--light-light-gray);
   }
+
+  @media only screen and (min-width: 800px) {
+    .footer * {
+      font-size: 30px;
+    }
+  }
