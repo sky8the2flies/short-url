@@ -12,7 +12,7 @@ body > nav {
     transition: ease-in-out .5s;
     text-decoration: none;
     padding: 15px;
-    color: var(--light-dark-blue);
+    color: var(--light-light-blue);
     height: 100%;
   }
   
