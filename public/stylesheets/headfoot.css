@@ -9,22 +9,21 @@ body > nav {
 }
   
   nav > a {
-    transition: ease-in-out .5s;
     text-decoration: none;
     padding: 15px;
     color: var(--light-light-blue);
     height: 100%;
+    transition: 250ms color ease, 250ms background ease;
   }
   
   nav > a:hover {
-    transition: ease-in-out .5s;
     color: var(--light-light-gray);
-    background-color: var(--light-dark-blue);
+    background: var(--light-dark-blue);
   }
   
   nav > a.active {
     color: var(--light-dark);
-    background-color: var(--light-light-blue)
+    background: var(--light-light-blue)
   }
 
   .footer {
@@ -49,12 +48,11 @@ body > nav {
   }
   
   .footer a {
-    transition: ease-in-out .5s;
     color: var(--light-dark-blue);
+    transition: 250ms color ease;
   }
   
   .footer a:hover {
-    transition: ease-in-out .5s;
     color: var(--light-light-gray);
   }
 

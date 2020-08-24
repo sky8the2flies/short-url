@@ -11,7 +11,7 @@ body {
 
 body > main {
   grid-area: main;
-  background: var(--light-dark-blue);
+  background: linear-gradient(10deg, var(--light-light-blue), var(--light-dark-blue));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,7 +97,7 @@ body > main {
   font-size: 18px;
   font-weight: 300;
   color: #333;
-  transition: 0.5s;
+  transition: 300ms;
   pointer-events: none;
 }
 
@@ -118,12 +118,11 @@ body > main {
   border: none;
   max-width: 150px;
   padding: 12px;
-  transition: 0.3s;
+  transition: 250ms background ease;
 }
 
 #container .content .url-form .form-box .input-box input[type="submit"]:hover {
   background: #ff568c;
-  transition: 0.3s;
 }
 
 .error {
@@ -143,6 +142,7 @@ body > main {
 .view-url {
   width: 100%;
   text-align: center;
+  color: var(--light-light-gray);
 }
 
 .view-url a, .view-url button {
@@ -151,21 +151,15 @@ body > main {
   font-size: 20px;
   padding: 20px;
   border-radius: 10px;
-  transition: .3s;
+  transition: 250ms color ease, 250ms background ease;
   border: 2px solid var(--light-dark);
   background: transparent;
   cursor: pointer;
+  color: var(--light-light-blue)
 }
 
-.view-url a:hover {
-  transition: .3s;
-  background-color: var(--light-dark);
-  color: var(--light-dark-gray);
-}
-
-.view-url button:hover {
-  transition: .3s;
-  background-color: var(--light-dark);
+.view-url a:hover, .view-url button:hover {
+  background: var(--light-dark);
   color: var(--light-dark-gray);
 }
 
