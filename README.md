@@ -9,9 +9,6 @@ This is a short-url where you can take your long ugly looking URL and shorten it
 - [View](#View)
 - [Author](#Author)
 
-## Images
-TODO
-
 ## Technologies used
 1. HTML
 2. CSS
@@ -29,7 +26,7 @@ To use the app just follow these simple steps:
 ### View
 To view the app just click the link
 
-[Deployed heroku app](https://kc-short-url.herokuapp.com/)
+[Deployed heroku app](https://ss-short-url.herokuapp.com/)
 
 ## Next Steps
 - [] Add recently created links.
